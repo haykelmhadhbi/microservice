@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  discovery:
+    build: ./discoveryserver
+    ports:
+      - "8761:8761"
+    image: "discoveryserver"
+  candidat:
+    build: ./Condidat
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "8081:8081"
+    image: "condidat"
